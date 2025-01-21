@@ -31,7 +31,8 @@ for iter = 1 : max_iter
     Ck = C;
 %% update B by proj_l20
  P=(beta/(beta+rho))*Ck+(rho/(beta+rho))*Bk;
- B=proj_l20(P,s);
+%  B=proj_l20(P,s);
+ B=prox_l21(P,s);
 %% update E
  Tx    = find( sum(abs(X),1)>0 );
  XC    = X(:,Tx)*C(Tx,:);

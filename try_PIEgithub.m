@@ -66,21 +66,21 @@ for cc=1:length(corruption1)
 
                                 s=label;
                                 Z=X'\X';
-                                figure(1)
+                                %figure(1)  % commented by bero
 
-                                colorbar
-                                map = [1 1 1    %定义颜色变量
+                                %colorbar   % commented by bero
+                                map = [1 1 1
                                     1 0.94118 0.96078
                                     1 0.89412 0.88235
                                     1 0.62745 0.47843
                                     1 0.49804 0.31373
                                     1 0.27059 0];
                                 clims = [0 0.5];
-                                A=imagesc(abs(Z)',clims);
+                                %A=imagesc(abs(Z)',clims);   % commented by bero
 
                                 %A=imagesc(abs(Z));
-                                colorbar
-                                colormap(map)
+                                %colorbar     % commented by bero
+                                %colormap(map)   % commented by bero
                                 %JSSC
                                 tol = 1e-6;
                                 normalizeColumn = @(data) cnormalize_inplace(data);

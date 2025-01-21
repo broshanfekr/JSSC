@@ -13,33 +13,30 @@ addpath('data/');
 % X is a data matrix with size of n*d
 % Y is true labels with size n*1
 
-load('data/PIE_N1340_D1024.mat');
-dataset_name = "fashionmnist";
-% data_path = strcat(dataset_name, ".mat");
-% load(data_path)
-% 
-% FEA = zeros(size(fea, 1), size(fea, 2)*size(fea, 3));
-% for i = 1:size(fea, 1)
-%    tmp_img = fea(i, :, :, :);
-%    tmp_img = squeeze(tmp_img);
-%    tmp_img = rgb2gray(tmp_img);
-%    tmp_img = reshape(double(tmp_img), 1, size(fea, 2)*size(fea, 3));
-%    FEA(i, :) = tmp_img(1,:);
-% end
-% fea = FEA;
-% 
-% Y = double(gnd);
-% X = X;
+%load('data/PIE_N1340_D1024.mat');
+dataset_name = "cifar10";
+data_path = strcat(dataset_name, ".mat");
+load(data_path)
+
+FEA = zeros(size(fea, 1), size(fea, 2)*size(fea, 3));
+for i = 1:size(fea, 1)
+   tmp_img = fea(i, :, :, :);
+   tmp_img = squeeze(tmp_img);
+   tmp_img = rgb2gray(tmp_img);
+   tmp_img = reshape(double(tmp_img), 1, size(fea, 2)*size(fea, 3));
+   FEA(i, :) = tmp_img(1,:);
+end
+fea = FEA;
+
+Y = double(gnd);
+X = X;
 
 %% Data processing
-dataSetName = 'PIE';
 nExperiment = 1;
 data_num = size(X, 1);
 class_num = length(unique(Y));
 label = Y;
 nCluster = length(unique(label));
-
-
 
 K=[4, 5];
 beta=[0.025];

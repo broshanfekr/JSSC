@@ -14,7 +14,7 @@ addpath('data/');
 % Y is true labels with size n*1
 
 %load('data/PIE_N1340_D1024.mat');
-dataset_name = "cifar10";
+dataset_name = "fashionmnist";
 data_path = strcat(dataset_name, ".mat");
 load(data_path)
 
@@ -38,15 +38,15 @@ class_num = length(unique(Y));
 label = Y;
 nCluster = length(unique(label));
 
-K=[4, 5];
+K=[2, 3, 4, 5, 6, 7];
 beta=[0.025];
-lambda = [0.1, 1];
+lambda = [0.001, 0.01, 0.1, 1, 10];
 alph = [0.0001];
 rho =[0.01];
 corruption = 0;%add noise
 corruption1 = [0];
-maxiter=linspace(1,6,6);
-%maxiter=5;
+% maxiter=linspace(1,6,6);
+maxiter=100;
 
 results_JSSCSSC=zeros(nExperiment, 5);
 

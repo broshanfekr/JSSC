@@ -14,7 +14,7 @@ addpath('data/');
 % Y is true labels with size n*1
 
 %load('data/PIE_N1340_D1024.mat');
-dataset_name = "fashionmnist";
+dataset_name = "cifar10";
 data_path = strcat(dataset_name, ".mat");
 load(data_path)
 
@@ -151,3 +151,11 @@ for cc=1:length(corruption1)
         end
     end
 end
+
+[~, idx] = max(resutls(:, 8));
+max_row = resutls(idx, :);
+acc = max_row(7);
+nmi = max_row(8);
+ari = max_row(9);
+f1 = max_row(10);
+fprintf('\nacc = %.2f, nmi = %.2f, ari = %.2f, f1_score = %.2f\n', acc*100, nmi*100, ari*100, f1*100)
